@@ -1,0 +1,20 @@
+.App{
+  margin: 0px;
+}
+
+
+#page1{
+  height: 500px;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+
+}
+
+.title{
+  color: white;
+  margin-top: 0px;
+  text-align: center;
+  padding: 10px;
+
+}
