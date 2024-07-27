@@ -18,3 +18,11 @@
   padding: 10px;
 
 }
+
+#buttonLayout{
+  display: flex;
+}
+
+.keyboardInputShow{
+  margin: 10px;
+}
