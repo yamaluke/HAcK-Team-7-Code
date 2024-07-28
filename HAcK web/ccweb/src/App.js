@@ -5,6 +5,14 @@ import io from 'socket.io-client';
 
 const socket = io('http://localhost:8000');
 
+function sleep(miliseconds) {
+  var currentTime = new Date().getTime();
+
+  while (currentTime + miliseconds >= new Date().getTime()) {
+  }
+}
+
+
 function App() {
   //==========================//
   //== Variable declaration ==//
@@ -20,9 +28,12 @@ function App() {
   const [textColorD, setTextColorD] = useState(baseColor);
   const [textColorQ, setTextColorQ] = useState(baseColor);
   const [textColorE, setTextColorE] = useState(baseColor);
+  const [ccImage, setCCImage] = useState('default.JPG')
 
   // variables that shows that status of the direction
   var inMotion = false;
+  // const [inMotion, setInMotion] = useState(false);
+
 
   // useState for the sensor variables 
   const [temp, setTemp] = useState('-0')
@@ -32,29 +43,36 @@ function App() {
   useEffect( () => {
     // keyboard handle for directional buttons being pressed
     const handleKeyDown = (event) => {
+      // sleep(200)
       if(event.key === 'w' && !inMotion){
         inMotion = true;
         setTextColorW('blue');
+        setCCImage('Won.JPG')
         socket.emit('send-direction', 'fowardsGo')
       }else if (event.key === 's' && !inMotion){
         inMotion = true;
         setTextColorS('blue');
+        setCCImage('Son.JPG')
         socket.emit('send-direction', 'backwardsGo')
       }else if (event.key === 'a' && !inMotion){
         inMotion = true;
         setTextColorA('blue');
+        setCCImage('Aon.JPG')
         socket.emit('send-direction', 'leftSpin')
       }else if (event.key === 'd' && !inMotion){
         inMotion = true;
         setTextColorD('blue');
+        setCCImage('Don.JPG')
         socket.emit('send-direction', 'rightSpin')
       }else if (event.key === 'q' && !inMotion){
         inMotion = true;
         setTextColorQ('blue');
+        setCCImage('Qon.JPG')
         socket.emit('send-direction', 'leftGo')
       }else if (event.key === 'e' && !inMotion){
         inMotion = true;
         setTextColorE('blue');
+        setCCImage('Eon.JPG')
         socket.emit('send-direction', 'rightGo')
       }
     }
@@ -79,26 +97,32 @@ function App() {
       if(event.key === 'w'){
         inMotion = false;
         setTextColorW(baseColor);
+        setCCImage('default.JPG')
         socket.emit('send-direction', 'motionStop')
       }else if (event.key === 's'){
         inMotion = false;
         setTextColorS(baseColor);
+        setCCImage('default.JPG')
         socket.emit('send-direction', 'motionStop')
       }else if (event.key === 'a'){
         inMotion = false;
         setTextColorA(baseColor);
+        setCCImage('default.JPG')
         socket.emit('send-direction', 'motionStop')
       }else if (event.key === 'd'){
         inMotion = false;
         setTextColorD(baseColor);
+        setCCImage('default.JPG')
         socket.emit('send-direction', 'motionStop')
       }else if (event.key === 'q'){
         inMotion = false;
         setTextColorQ(baseColor);
+        setCCImage('default.JPG')
         socket.emit('send-direction', 'motionStop')
       }else if (event.key === 'e'){
         inMotion = false;
         setTextColorE(baseColor);
+        setCCImage('default.JPG')
         socket.emit('send-direction', 'motionStop')
       }
       
@@ -114,7 +138,7 @@ function App() {
       socket.off('ultrasonic');
       socket.off('humidity')
     }
-  })
+  },[])
 
 
   return (
@@ -135,6 +159,7 @@ function App() {
           <h3 className="sensorData"> Temperature: {temp}</h3>
           <h3 className='sensorData'> Ultrasonic distance: {ultrasonic}</h3>
           <h3 className='sensorData'> Humidity: {humidity}</h3>
+          <img id = 'ccGraphic' src = {ccImage}></img>
         </div>
 
       </div>
