@@ -11,9 +11,9 @@ def cb(topic, msg):
         if msg == b'fowardsGo':
             print("fowards")
             move_forward()
-        if msg == b'fowardsStop':
+        elif msg == b'fowardsStop':
             print("fowardsStop")
-        if msg == b'rightGo':
+        elif msg == b'rightGo':
             print("right")
             turn_right()
         

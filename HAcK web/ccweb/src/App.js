@@ -1,15 +1,14 @@
+//== App.js ==//
 import './App.css';
 import React, { useState, useEffect, useRef } from "react";
 import io from 'socket.io-client';
 
 const socket = io('http://localhost:8000');
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 function App() {
-
+  //==========================//
+  //== Variable declaration ==//
+  //==========================//
   // base color for text that uses useState
   const baseColor = 'white';
 
@@ -19,6 +18,8 @@ function App() {
   const [textColorS, setTextColorS] = useState(baseColor);
   const [textColorA, setTextColorA] = useState(baseColor);
   const [textColorD, setTextColorD] = useState(baseColor);
+  const [textColorQ, setTextColorQ] = useState(baseColor);
+  const [textColorE, setTextColorE] = useState(baseColor);
 
   // variables that shows that status of the direction
   var inMotion = false;
@@ -42,10 +43,18 @@ function App() {
       }else if (event.key === 'a' && !inMotion){
         inMotion = true;
         setTextColorA('blue');
-        socket.emit('send-direction', 'leftGo')
+        socket.emit('send-direction', 'leftSpin')
       }else if (event.key === 'd' && !inMotion){
         inMotion = true;
         setTextColorD('blue');
+        socket.emit('send-direction', 'rightSpin')
+      }else if (event.key === 'q' && !inMotion){
+        inMotion = true;
+        setTextColorQ('blue');
+        socket.emit('send-direction', 'leftGo')
+      }else if (event.key === 'e' && !inMotion){
+        inMotion = true;
+        setTextColorE('blue');
         socket.emit('send-direction', 'rightGo')
       }
     }
@@ -70,19 +79,27 @@ function App() {
       if(event.key === 'w'){
         inMotion = false;
         setTextColorW(baseColor);
-        socket.emit('send-direction', 'fowardsStop')
+        socket.emit('send-direction', 'motionStop')
       }else if (event.key === 's'){
         inMotion = false;
         setTextColorS(baseColor);
-        socket.emit('send-direction', 'backwardsStop')
+        socket.emit('send-direction', 'motionStop')
       }else if (event.key === 'a'){
         inMotion = false;
         setTextColorA(baseColor);
-        socket.emit('send-direction', 'leftStop')
+        socket.emit('send-direction', 'motionStop')
       }else if (event.key === 'd'){
         inMotion = false;
         setTextColorD(baseColor);
-        socket.emit('send-direction', 'rightStop')
+        socket.emit('send-direction', 'motionStop')
+      }else if (event.key === 'q'){
+        inMotion = false;
+        setTextColorQ(baseColor);
+        socket.emit('send-direction', 'motionStop')
+      }else if (event.key === 'e'){
+        inMotion = false;
+        setTextColorE(baseColor);
+        socket.emit('send-direction', 'motionStop')
       }
       
     }
@@ -109,8 +126,10 @@ function App() {
         <div id = 'buttonLayout'>
           <h3 className="keyboardInputShow" style = {{color: textColorW}}> Foward (W) </h3>
           <h3 className="keyboardInputShow" style = {{color: textColorS}}> Backwards (S) </h3>
-          <h3 className="keyboardInputShow" style = {{color: textColorA}}> Left (A) </h3>
-          <h3 className="keyboardInputShow" style = {{color: textColorD}}> Right (D) </h3>
+          <h3 className="keyboardInputShow" style = {{color: textColorA}}> Spin Left (A) </h3>
+          <h3 className="keyboardInputShow" style = {{color: textColorD}}> Spin Right (D) </h3>
+          <h3 className="keyboardInputShow" style = {{color: textColorQ}}> Left (A) </h3>
+          <h3 className="keyboardInputShow" style = {{color: textColorE}}> Right (E) </h3>
         </div>
         <div id = 'sensorLayout'>
           <h3 className="sensorData"> Temperature: {temp}</h3>
