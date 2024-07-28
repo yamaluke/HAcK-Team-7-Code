@@ -26,3 +26,15 @@
 .keyboardInputShow{
   margin: 10px;
 }
+
+.sensorData{
+  color: white;
+}
+
+#sensorLayout{
+  display: flex;
+}
+
+.sensorData{
+  margin: 10px;
+}
