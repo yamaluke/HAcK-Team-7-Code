@@ -3,22 +3,38 @@ import time #importing time for delay
 from connections import connect_mqtt, connect_internet
 from constants import ssid, mqtt_server, mqtt_user, mqtt_pass
 
-# Function to handle an incoming message
-
+#=============================================#
+#== Function to deal with directional input ==#
+#=============================================#
 def cb(topic, msg):
 #     print(f"Topic: {topic}, Message: {msg}")
     if topic == b'direction':
-        if msg == b'fowardsGo':
+        if msg == b'motionStop':
+            print("stop")
+            stop()
+        elif msg == b'fowardsGo':
             print("fowards")
             move_forward()
-        elif msg == b'fowardsStop':
-            print("fowardsStop")
+        elif msg == b'backwardsGo':
+            print("backwards")
+            move_backward()
+        elif msg == b'leftSpin':
+            spin_left()
+            print("spinning left")
+        elif msg == b'rightSpin':
+            spin_right()
+            print("spinning right")
+        elif msg == b'leftGo':
+            print("left")
+            turn_left()
         elif msg == b'rightGo':
             print("right")
             turn_right()
         
-
-
+        
+#===============================#
+#== Connecting to the network ==#
+#===============================#
 def networkConnector():
     try:
         connect_internet(ssid,'UCLA.HAcK.2024.Summer')
@@ -36,9 +52,9 @@ def networkConnector():
         print('keyboard interrupt')
 
 
-
-# Defining motor pins
-
+#=========================#
+#== Defining motor pins ==#
+#=========================#
 #OUT1  and OUT2
 In1=Pin(18,Pin.OUT) 
 In2=Pin(19,Pin.OUT)  
@@ -56,6 +72,9 @@ EN_B=Pin(2,Pin.OUT)
 EN_A.high()
 EN_B.high()
 
+#==================================#
+#== functions to control movment ==#
+#==================================#
 # Forward
 def move_forward():
     In1.low()
@@ -106,6 +125,10 @@ def stop():
     In3.low()
     In4.low()
     
+
+#=====================#
+#== function †ester ==#
+#=====================#
 def testSeq(testTime):
     move_forward()
     print("Forward")
@@ -143,6 +166,7 @@ def testSeq(testTime):
     stop()
     print("Stop")
     time.sleep(5)
+
 
 try:
     # testSeq(.3)

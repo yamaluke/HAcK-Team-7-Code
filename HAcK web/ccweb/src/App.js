@@ -128,7 +128,7 @@ function App() {
           <h3 className="keyboardInputShow" style = {{color: textColorS}}> Backwards (S) </h3>
           <h3 className="keyboardInputShow" style = {{color: textColorA}}> Spin Left (A) </h3>
           <h3 className="keyboardInputShow" style = {{color: textColorD}}> Spin Right (D) </h3>
-          <h3 className="keyboardInputShow" style = {{color: textColorQ}}> Left (A) </h3>
+          <h3 className="keyboardInputShow" style = {{color: textColorQ}}> Left (Q) </h3>
           <h3 className="keyboardInputShow" style = {{color: textColorE}}> Right (E) </h3>
         </div>
         <div id = 'sensorLayout'>
