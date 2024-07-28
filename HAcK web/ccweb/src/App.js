@@ -4,6 +4,10 @@ import io from 'socket.io-client';
 
 const socket = io('http://localhost:8000');
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function App() {
 
   // base color for text that uses useState
@@ -16,6 +20,9 @@ function App() {
   const [textColorA, setTextColorA] = useState(baseColor);
   const [textColorD, setTextColorD] = useState(baseColor);
 
+  // variables that shows that status of the direction
+  var inMotion = false;
+
   // useState for the sensor variables 
   const [temp, setTemp] = useState('-0')
   const [ultrasonic, setUltrasonic] = useState('-0');
@@ -24,16 +31,20 @@ function App() {
   useEffect( () => {
     // keyboard handle for directional buttons being pressed
     const handleKeyDown = (event) => {
-      if(event.key === 'w'){
+      if(event.key === 'w' && !inMotion){
+        inMotion = true;
         setTextColorW('blue');
         socket.emit('send-direction', 'fowardsGo')
-      }else if (event.key === 's'){
+      }else if (event.key === 's' && !inMotion){
+        inMotion = true;
         setTextColorS('blue');
         socket.emit('send-direction', 'backwardsGo')
-      }else if (event.key === 'a'){
+      }else if (event.key === 'a' && !inMotion){
+        inMotion = true;
         setTextColorA('blue');
         socket.emit('send-direction', 'leftGo')
-      }else if (event.key === 'd'){
+      }else if (event.key === 'd' && !inMotion){
+        inMotion = true;
         setTextColorD('blue');
         socket.emit('send-direction', 'rightGo')
       }
@@ -57,15 +68,19 @@ function App() {
     // turn keys back to normal
     const handleKeyUp = (event) => {
       if(event.key === 'w'){
+        inMotion = false;
         setTextColorW(baseColor);
         socket.emit('send-direction', 'fowardsStop')
       }else if (event.key === 's'){
+        inMotion = false;
         setTextColorS(baseColor);
         socket.emit('send-direction', 'backwardsStop')
       }else if (event.key === 'a'){
+        inMotion = false;
         setTextColorA(baseColor);
         socket.emit('send-direction', 'leftStop')
       }else if (event.key === 'd'){
+        inMotion = false;
         setTextColorD(baseColor);
         socket.emit('send-direction', 'rightStop')
       }
