@@ -168,6 +168,7 @@ def testSeq(testTime):
     time.sleep(5)
 
 
+
 try:
     # testSeq(.3)
     networkConnector()
