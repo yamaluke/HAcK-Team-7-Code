@@ -2,6 +2,8 @@ from machine import Pin
 import time #importing time for delay  
 from connections import connect_mqtt, connect_internet
 from constants import ssid, mqtt_server, mqtt_user, mqtt_pass
+from hcsr04 import HCSR04
+from dht import DHT11
 
 #=============================================#
 #== Function to deal with directional input ==#
@@ -30,6 +32,10 @@ def cb(topic, msg):
         elif msg == b'rightGo':
             print("right")
             turn_right()
+        elif msg == b'lightOff':
+            print('light off')
+        elif msg == b'lightOn':
+            print('light on')
         
         
 #===============================#
@@ -39,14 +45,8 @@ def networkConnector():
     try:
         connect_internet(ssid,'UCLA.HAcK.2024.Summer')
         print('Connected to internet')
-        client = connect_mqtt(mqtt_server, mqtt_user, mqtt_pass)
-
-        client.set_callback(cb)
-        client.subscribe('direction')
-        client.publish("mytopic", "message")
-        while True:
-            client.check_msg()
-            time.sleep(1)
+        
+        
 
     except KeyboardInterrupt:
         print('keyboard interrupt')
@@ -55,6 +55,16 @@ def networkConnector():
 #=========================#
 #== Defining motor pins ==#
 #=========================#
+#servo pins 
+sensorUS = HCSR04(trigger_pin=28, echo_pin=7, echo_timeout_us = 10000)
+
+# pin connection
+led = Pin('LED', mode=Pin.OUT)
+
+#humidity/temp
+sensorHT = DHT11(Pin(11, Pin.IN, Pin.PULL_UP))
+
+
 #OUT1  and OUT2
 In1=Pin(18,Pin.OUT) 
 In2=Pin(19,Pin.OUT)  
@@ -171,6 +181,82 @@ def testSeq(testTime):
 
 try:
     # testSeq(.3)
+    # network connection
     networkConnector()
+    client = connect_mqtt(mqtt_server, mqtt_user, mqtt_pass)
+
+    client.set_callback(cb)
+    client.subscribe('direction')
+    client.publish("mytopic", "message")
+    networkConnector()
+    client.check_msg()
+            
+    
+    
+    while True:
+        # ultra sonic data updater
+        distance = sensorUS.distance_cm()
+        client.publish('ultrasonic', str(distance))
+        print('Distance to the rear: ', distance, 'cm')
+
+        if (distance < 15):
+            print('Warning: too close to the object! Distance: ', distance, 'cm')
+            led.value(1)
+            stop()
+        else:
+            led.value(0)
+            
+        # motor data
+        client.check_msg()
+        
+        time.sleep(.1)
+        
+        # ultra sonic data updater
+        distance = sensorUS.distance_cm()
+        client.publish('ultrasonic', str(distance))
+        print('Distance to the rear: ', distance, 'cm')
+
+        if (distance < 15):
+            print('Warning: too close to the object! Distance: ', distance, 'cm')
+            led.value(1)
+            stop()
+        else:
+            led.value(0)
+            
+        # motor data
+        client.check_msg()
+        
+        time.sleep(.1)
+        
+        # ultra sonic data updater
+        distance = sensorUS.distance_cm()
+        client.publish('ultrasonic', str(distance))
+        print('Distance to the rear: ', distance, 'cm')
+
+        if (distance < 15):
+            print('Warning: too close to the object! Distance: ', distance, 'cm')
+            led.value(1)
+            stop()
+        else:
+            led.value(0)
+            
+        # motor data
+        client.check_msg()
+        
+        time.sleep(.1)
+        
+        #humidity and temp
+        sensorHT.measure()
+        temp = sensorHT.temperature()
+        humid = sensorHT.humidity()
+        print("Temperature in Celsius: ", temp)
+        client.publish('temp', str(temp))
+        print("Humidity: ", humid)
+        client.publish('humidity', str(humid))
+        
+        
+        time.sleep(.1)
 finally:
+    led = Pin('LED', mode=Pin.OUT)
+    led.value(0)
     stop()

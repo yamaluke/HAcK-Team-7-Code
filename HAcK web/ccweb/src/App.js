@@ -28,6 +28,8 @@ function App() {
   const [textColorD, setTextColorD] = useState(baseColor);
   const [textColorQ, setTextColorQ] = useState(baseColor);
   const [textColorE, setTextColorE] = useState(baseColor);
+  const [lightStatus, setLightStatus] = useState('off');
+
   const [ccImage, setCCImage] = useState('default.JPG')
 
   // variables that shows that status of the direction
@@ -74,6 +76,14 @@ function App() {
         setTextColorE('blue');
         setCCImage('Eon.JPG')
         socket.emit('send-direction', 'rightGo')
+      }else if(event.key === 'L'){
+        if({lightStatus} == 'on'){
+          setLightStatus('off')
+          socket.emit('send-direction', 'lightOff')
+        }else{
+          setLightStatus('on')
+          socket.emit('send-direction', 'lightOn')
+        }
       }
     }
 
@@ -125,7 +135,6 @@ function App() {
         setCCImage('default.JPG')
         socket.emit('send-direction', 'motionStop')
       }
-      
     }
 
     window.addEventListener('keydown', handleKeyDown);
@@ -144,9 +153,23 @@ function App() {
   return (
     <div className="App">
       <div id = 'page1'>
-        <h1 className="title"> 
+        <h1 className="title1"> 
           Control Center
         </h1>
+        <h1 className="title2"> 
+          Prius R2
+        </h1>
+        <div id = 'cameraFrame'>
+          <div id = 'sensorLayoutL'>
+            <h3 className="sensorData"> Temperature: {temp}</h3>
+            <h3 className='sensorData'> Humidity: {humidity}</h3>
+          </div>
+          <iframe src = "http://192.168.50.94" height="300" width="300" className="feed" />
+          <div id = 'sensorLayoutR'>
+            <h3 className='sensorData'> Ultrasonic distance: {ultrasonic}</h3>
+            <h3 className='sensorData'> LED status (L): {lightStatus}</h3>
+          </div>
+        </div>
         <div id = 'buttonLayout'>
           <h3 className="keyboardInputShow" style = {{color: textColorW}}> Foward (W) </h3>
           <h3 className="keyboardInputShow" style = {{color: textColorS}}> Backwards (S) </h3>
@@ -155,12 +178,11 @@ function App() {
           <h3 className="keyboardInputShow" style = {{color: textColorQ}}> Left (Q) </h3>
           <h3 className="keyboardInputShow" style = {{color: textColorE}}> Right (E) </h3>
         </div>
-        <div id = 'sensorLayout'>
-          <h3 className="sensorData"> Temperature: {temp}</h3>
-          <h3 className='sensorData'> Ultrasonic distance: {ultrasonic}</h3>
-          <h3 className='sensorData'> Humidity: {humidity}</h3>
+        <div id = 'CCGShell'>
           <img id = 'ccGraphic' src = {ccImage}></img>
         </div>
+        
+        
 
       </div>
     </div>

@@ -4,23 +4,35 @@
 
 
 #page1{
-  height: 500px;
+  height: 1000px;
   width: 100%;
   background-color: black;
   margin: 0;
 
 }
 
-.title{
+.title1{
   color: white;
   margin-top: 0px;
   text-align: center;
   padding: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
 
+.title2{
+  color: white;
+  margin-top: 0px;
+  text-align: center;
+  padding: 10px;
+  padding-top: 0px;
 }
 
 #buttonLayout{
   display: flex;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .keyboardInputShow{
@@ -31,14 +43,32 @@
   color: white;
 }
 
-#sensorLayout{
-  display: flex;
+#sensorLayoutL{
+  margin-left: 28%;
 }
 
 .sensorData{
   margin: 10px;
 }
 
+#CCGShell{
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #ccGraphic{
   width: 200px;
+}
+
+#cameraFrame{
+  display: flex;
+  /* max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto; */
+}
+
+.feed{
+  margin: 5px;
+  
 }
