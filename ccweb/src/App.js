@@ -1,10 +1,10 @@
 //==========================================================//
-//== File name: App.js
+//== File name: App.js                                    ==//
 //== Creator: Luke Yamaguchi                              ==//
 //== Creation date: 2024/07/28                            ==//
 //== Creation purpose: The following program was used to  ==//
-//==  create a website that acted as the control center   ==//
-//==  for the rover (Prius R2) for team 7 (rover rangers) ==//
+//== create a website that acted as the control center    ==//
+//== for the rover (Prius R2) for team 7 (Rover Rangers)  ==//
 //== during the 2024 HAcK competition.                    ==//
 //==========================================================//
 
@@ -47,6 +47,7 @@ function App() {
   const [humidity, setHumidity] = useState('-0');
   const [lightStatus, setLightStatus] = useState('off');
 
+  
   //=========================================//
   //== Code for sending and receiving data ==//
   //=========================================//
@@ -190,9 +191,6 @@ function App() {
         <div id = 'CCGShell'>
           <img id = 'ccGraphic' src = {ccImage}></img>
         </div>
-        
-        
-
       </div>
     </div>
   );
