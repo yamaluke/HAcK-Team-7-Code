@@ -197,7 +197,7 @@ function App() {
           Rover Rangers - Prius R2
         </h1>
         <h1 className="title2"> 
-          Team members
+          Team members Introduction
         </h1>
         <div className="bioBox">
           <div className="bio">
@@ -251,7 +251,7 @@ function App() {
               Slits were created on the base to the sides of the motor allowing us to add support to the motor from all directions helping to stabilize it.
             </h4>
             <h4 className="block2text">
-              Problems include flying parts and insecure motor connection from the tape.
+              Problems with this model include flying parts and insecure motor connection from the tape.
             </h4>
           </div>
         </div>
