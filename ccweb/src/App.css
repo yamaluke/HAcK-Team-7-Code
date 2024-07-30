@@ -2,6 +2,20 @@
   margin: 0px;
 }
 
+#header{
+  display: flex;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logoImage{
+  margin-top: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
+  height: 90px;
+}
+
 #page1{
   height: 700px;
   width: 100%;
@@ -12,7 +26,7 @@
 
 .title1{
   color: white;
-  margin-top: 0px;
+  margin-top: 10px;
   text-align: center;
   padding: 10px;
   padding-bottom: 0px;

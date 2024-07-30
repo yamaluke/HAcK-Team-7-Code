@@ -163,12 +163,18 @@ function App() {
   return (
     <div className="App">
       <div id = 'page1'>
-        <h1 className="title1"> 
-          Rover Rangers - Prius R2
-        </h1>
-        <h1 className="title2"> 
-          Control Center
-        </h1>
+      <div id='header'>
+          <img className="logoImage" src='logo.jpg'></img>
+          <div>
+            <h1 className="title1"> 
+              Rover Rangers - Prius R2
+            </h1>
+            <h1 className="title2"> 
+              Control Center
+            </h1>
+          </div>
+          <img className="logoImage" src='logo.jpg'></img>
+        </div>
         <div id = 'cameraFrame'>
           <div id = 'sensorLayoutL'>
             <h3 className="sensorData"> Temperature: {temp}</h3>
