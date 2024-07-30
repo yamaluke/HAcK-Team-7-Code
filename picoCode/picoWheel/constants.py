@@ -1,0 +1,5 @@
+mqtt_server = '1b6be33a6a734674afa4800c69274606.s1.eu.hivemq.cloud'
+mqtt_user = 'picoWheel'
+mqtt_pass = 'picoWheelC2'
+ssid = 'HAcK-Project-WiFi-2'
+# wifi_pass = 'UCLA.HAcK.2024.Summer'
