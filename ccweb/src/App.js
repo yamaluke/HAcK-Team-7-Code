@@ -47,7 +47,7 @@ function App() {
   const [humidity, setHumidity] = useState('-0');
   const [lightStatus, setLightStatus] = useState('off');
 
-  
+
   //=========================================//
   //== Code for sending and receiving data ==//
   //=========================================//
@@ -164,20 +164,20 @@ function App() {
     <div className="App">
       <div id = 'page1'>
         <h1 className="title1"> 
-          Control Center
+          Rover Rangers - Prius R2
         </h1>
         <h1 className="title2"> 
-          Prius R2
+          Control Center
         </h1>
         <div id = 'cameraFrame'>
           <div id = 'sensorLayoutL'>
             <h3 className="sensorData"> Temperature: {temp}</h3>
-            <h3 className='sensorData'> Humidity: {humidity}</h3>
+            <h3 className="sensorData"> Humidity: {humidity}</h3>
           </div>
           <iframe src = "http://192.168.50.94" height="300" width="300" className="feed" />
           <div id = 'sensorLayoutR'>
-            <h3 className='sensorData'> Ultrasonic distance: {ultrasonic}</h3>
-            <h3 className='sensorData'> LED status (L): {lightStatus}</h3>
+            <h3 className="sensorData"> Ultrasonic distance: {ultrasonic}</h3>
+            <h3 className="sensorData"> LED status (L): {lightStatus}</h3>
           </div>
         </div>
         <div id = 'buttonLayout'>
@@ -191,6 +191,94 @@ function App() {
         <div id = 'CCGShell'>
           <img id = 'ccGraphic' src = {ccImage}></img>
         </div>
+      </div>
+      <div id = 'page2'>
+      <h1 className="title1"> 
+          Rover Rangers - Prius R2
+        </h1>
+        <h1 className="title2"> 
+          Team members
+        </h1>
+        <div className="bioBox">
+          <div className="bio">
+            <h2>Fernando Valles</h2>
+            <h3>Major: Chemical Engineering</h3>
+            <h3>Transfer CC: San Bernardin Valley College</h3>
+            <h3>Roles: Design & Assembly Lead</h3>
+          </div>
+          <img className="bioImage" src='Fernando.jpg'></img>
+          <img className="bioImage" src='luke.jpg'></img>
+          <div className="bio">
+            <h2>Luke Yamaguchi</h2>
+            <h3>Major: Computer Engineering</h3>
+            <h3>Transfer CC: Irvine Valley College</h3>
+            <h3>Roles: Project & Software Lead</h3>
+          </div>
+        </div>
+        <div className="bioBox">
+          <div className="bio">
+            <h2>Ryan Lafond</h2>
+            <h3>Major: Civil Engineering</h3>
+            <h3>Transfer CC: City College of San Francisco</h3>
+            <h3>Roles: CAD Lead</h3>
+          </div>
+          <img className="bioImage" src='Ryan.jpg'></img>
+          <img className="bioImage" src='tina.jpg'></img>
+          <div className="bio">
+            <h2>Tina Zhou</h2>
+            <h3>Major: Electrical Engineering</h3>
+            <h3>Transfer CC: Santa Monica College</h3>
+            <h3>Roles: Circuits Lead</h3>
+          </div>
+        </div>
+
+      </div>
+      <div id = 'page3'>
+      <h1 className="title1"> 
+          Rover Rangers - Prius R2
+        </h1>
+        <h1 className="title2"> 
+          Documentation
+        </h1>
+        <div id = 'block1'>
+          <img id='priusR1Image' src='priusR1.jpg'></img>
+          <div id='priusR1Bio'>
+            <h1>Prius R1</h1>
+            <h4 className="block2text">
+              This is our first model that we built. It has a full range of motion and can move fowards, backwards, right, left, diagonally fowards/right, and diagonally fowards/left.
+            </h4>
+            <h4 className="block2text">
+              Slits were created on the base to the sides of the motor allowing us to add support to the motor from all directions helping to stabilize it.
+            </h4>
+            <h4 className="block2text">
+              Problems include flying parts and insecure motor connection from the tape.
+            </h4>
+          </div>
+        </div>
+        <div id = 'block2'>
+          <img id='priusR2Image' src='priusR2.jpg'></img>
+          <div id='priusR1Bio'>
+            <div id='block22'>
+              <div id='block22Text'>
+                <h1>Prius R2</h1>
+                <h4 id='block22Sen'>
+                  This is our second model that we built. Comes with a new connection method which  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </h4>
+              </div>
+              <img id='updatedMotorImage' src='updatedMotor.jpg'></img>
+            </div>
+            <h4 id='block22Under'>
+               replaces the tape and helped to secure the motor. We also added side supports on the chassis which caged in the motor control circuits.
+            </h4>
+            <h4 className="block2text">
+              Sensors were added to measure temperature, humidity, and distance. A camera was also added.
+            </h4>
+            <h4 className="block2text">
+              A challenge we faced when making this model was that out new connection method allowed the motors to slide around inside the slit. To fix this we added a second wooded plate inside which stabilized the motors within the slits.
+            </h4>
+          </div>
+        </div>
+        
       </div>
     </div>
   );

@@ -2,9 +2,8 @@
   margin: 0px;
 }
 
-
 #page1{
-  height: 1000px;
+  height: 700px;
   width: 100%;
   background-color: black;
   margin: 0;
@@ -28,6 +27,26 @@
   padding-top: 0px;
 }
 
+#cameraFrame{
+  display: flex;
+  /* max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto; */
+}
+
+.sensorData{
+  color: white;
+  margin: 10px;
+}
+
+#sensorLayoutL{
+  margin-left: 28%;
+}
+
+.feed{
+  margin: 5px;
+}
+
 #buttonLayout{
   display: flex;
   max-width: fit-content;
@@ -36,18 +55,6 @@
 }
 
 .keyboardInputShow{
-  margin: 10px;
-}
-
-.sensorData{
-  color: white;
-}
-
-#sensorLayoutL{
-  margin-left: 28%;
-}
-
-.sensorData{
   margin: 10px;
 }
 
@@ -61,13 +68,111 @@
   width: 200px;
 }
 
-#cameraFrame{
-  display: flex;
-  /* max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto; */
+#page2{
+  height: 700px;
+  width: 100%;
+  background-color: black;
+  margin-top: 5px;
+
 }
 
-.feed{
-  margin: 5px;
+.bioBox{
+  display: flex;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bio{
+  height: 240px;
+  width: 380px;
+  margin: 10px;
+  border-color: white;
+  background-color: white;
+  padding: 5px;
+  padding-left: 20px;
+}
+
+.bioImage{
+  height: 250px;
+  width: 250px;
+  margin: 10px;
+  border-color: white;
+}
+
+#page3{
+  height: 700px;
+  width: 100%;
+  background-color: black;
+  margin-top: 5px;
+
+}
+
+#block1{
+  display: flex;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#priusR1Image{
+  height: 250px;
+  margin: 10px;
+}
+
+#priusR1Bio{
+  height: 240px;
+  width: 800px;
+  margin: 10px;
+  border-color: white;
+  background-color: white;
+  padding: 5px;
+  padding-left: 20px;
+}
+
+#block2{
+  display: flex;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#block22{
+  display: flex;
+  margin-bottom: 0px;
+}
+
+#priusR2Image{
+  height: 250px;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+#priusR2Bio{
+  height: 240px;
+  width: 800px;
+  margin: 10px;
+  border-color: white;
+  background-color: white;
+  padding: 5px;
+  padding-left: 20px;
+}
+
+#updatedMotorImage{
+  margin-top: 10px;
+  height: 90px;
+}
+
+#block22Sen{
+  margin-bottom: 0px;
+}
+
+#block22Under{
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
+
+.block2text{
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
