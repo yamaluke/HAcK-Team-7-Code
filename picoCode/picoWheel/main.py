@@ -3,9 +3,9 @@
 #== Creator: Luke Yamaguchi and Tina Zhou                ==#
 #== Creation date: 2024/07/28                            ==#
 #== Creation purpose: The following program was used to  ==#
-#== create a website that acted as the control center    ==#
-#== for the rover (Prius R2) for team 7 (Rover Rangers)  ==#
-#== during the 2024 HAcK competition.                    ==#
+#== control the pico controller on the rover (Prius R2)  ==#
+#== for team 7 (Rover Rangers) during the 2024 HAcK      ==#
+#== competition.                                         ==#
 #==========================================================#
 
 
