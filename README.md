@@ -15,6 +15,8 @@ Our design review presentation can also be found with the following link: https:
 1. open terminal and go into "ccweb" directory.
 2. use the command "npm start"
 
+note: First page on website is the control center used to control the rover, second page contains a quick introduction to the members, and the 3rd page contains documentation for our rover. 
+
 ## Connecting website to mqtt
 1. open terminal and go into "backend" directory.
 2. use the command "node index.js"
