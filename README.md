@@ -1,12 +1,12 @@
 Final code located in this branch.
 
 # Intro
-This code was used during the Mars Rover, 2024 UCLA HAcK Competition. 
-The code that our team developed and used can be accessed with the following path:
-    "ccweb/src/App.css"
-    "ccweb/src/App.js"
-    "picoCode/picoWheel/main.py"
-The circuit layout for our Raspberry Pi Pico can also be found with the following path: "ccweb/public/team 7 Circuit Layout.jpg"
+This code was used during the Mars Rover, 2024 UCLA HAcK Competition. \
+The code that our team developed and used can be accessed with the following path:\
+    "ccweb/src/App.css"\
+    "ccweb/src/App.js"\
+    "picoCode/picoWheel/main.py"\
+The circuit layout for our Raspberry Pi Pico can also be found with the following path: "ccweb/public/team 7 Circuit Layout.jpg"\
 Our design review presentation can also be found with the following link: https://www.youtube.com/watch?v=f7kG8iIJOoc
 
 
